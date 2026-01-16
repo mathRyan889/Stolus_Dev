@@ -3,413 +3,126 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stolus | Desenvolvimento de Software</title>
-
-    <!-- Fontes e Ícones -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
+        body { font-family: 'Inter', sans-serif; background-color: #020617; color: #f8fafc; }
+        .glass { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .text-gold {
+            background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-
-        body {
-            background: #020617;
-            color: #e5e7eb;
-            line-height: 1.6;
+        /* Estilo para os inputs do Django Form */
+        input, select, textarea {
+            width: 100% !important; background-color: rgba(15, 23, 42, 0.6) !important;
+            border: 1px solid rgba(59, 130, 246, 0.2) !important; padding: 1rem !important;
+            border-radius: 0.75rem !important; color: #fff !important; outline: none; margin-bottom: 1rem;
         }
-
-        /* HERO */
-        header {
-            min-height: 100vh;
-            background: radial-gradient(circle at top, #1e3a8a, #020617);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .hero {
-            max-width: 900px;
-        }
-
-        .hero img {
-            width: 140px;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 700;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: #cbd5f5;
-            margin: 20px 0 30px;
-        }
-
-        .hero-actions {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 25px;
-        }
-
-        .btn-whatsapp {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 16px 32px;
-            background: linear-gradient(135deg, #25D366, #1ebe57);
-            color: white;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 50px;
-            text-decoration: none;
-            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.35);
-            transition: 0.3s;
-        }
-
-        .btn-whatsapp:hover {
-            transform: translateY(-3px) scale(1.05);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        .social-links a {
-            font-size: 1.8rem;
-            color: #cbd5f5;
-            transition: 0.3s;
-        }
-
-        .social-links a:hover {
-            color: #38bdf8;
-            transform: translateY(-3px);
-        }
-
-        section {
-            max-width: 1100px;
-            margin: auto;
-            padding: 90px 20px;
-        }
-
-        section h2 {
-            font-size: 2.4rem;
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        /* SOLUÇÕES */
-        .solution-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .solution-card {
-            background: #020617;
-            border: 1px solid #1e293b;
-            border-radius: 18px;
-            padding: 35px 30px;
-            transition: 0.3s;
-        }
-
-        .solution-card:hover {
-            transform: translateY(-10px);
-            border-color: #38bdf8;
-        }
-
-        .solution-card i {
-            font-size: 2.5rem;
-            color: #38bdf8;
-            margin-bottom: 20px;
-        }
-
-        .solution-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-        }
-
-        .solution-card p {
-            color: #cbd5f5;
-            margin-bottom: 15px;
-        }
-
-        .solution-card ul {
-            list-style: none;
-            margin-bottom: 20px;
-        }
-
-        .solution-card ul li {
-            margin-bottom: 8px;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .solution-card ul li::before {
-            content: "✔";
-            position: absolute;
-            left: 0;
-            color: #22c55e;
-        }
-
-        .solution-price {
-            color: #94a3b8;
-            font-weight: 600;
-        }
-
-        /* FORM */
-        form {
-            max-width: 500px;
-            margin: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        form input {
-            padding: 14px;
-            border-radius: 8px;
-            border: none;
-            font-size: 1rem;
-        }
-
-        button {
-            padding: 14px;
-            background: #2563eb;
-            color: white;
-            font-weight: bold;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        button:hover {
-            background: #1e40af;
-        }
-
-        footer {
-            border-top: 1px solid #1e293b;
-            text-align: center;
-            padding: 30px 20px;
-            color: #94a3b8;
-        }
-
-        footer .social-links {
-            justify-content: center;
-            margin-top: 15px;
-        }
-
-        /* WHATSAPP FLOAT */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            width: 60px;
-            height: 60px;
-            background: #25D366;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
-            z-index: 999;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-        }
-
-        /* MENU */
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(2, 6, 23, 0.85);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid #1e293b;
-    z-index: 1000;
-}
-
-.navbar ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    padding: 18px 20px;
-}
-
-.navbar a {
-    color: #e5e7eb;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-.navbar a:hover {
-    color: #38bdf8;
-}
-
-/* empurra o conteúdo para não ficar escondido atrás do menu */
-header {
-    padding-top: 80px;
-}
-
+        select option { background-color: #0f172a; color: #fff; }
     </style>
 </head>
-<body>
+<body class="antialiased">
 
-<nav class="navbar">
-    <ul>
-        <li><a href="{% url 'home' %}">Home</a></li>
-        <li><a href="{% url 'about' %}">Sobre</a></li>
-    </ul>
+<nav class="sticky top-0 z-50 glass border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="{% url 'home' %}" class="text-2xl font-black text-gold tracking-tighter uppercase">STOLUS ⚜️</a>
+        <div class="hidden md:flex space-x-8 text-xs font-bold tracking-widest uppercase">
+            <a href="{% url 'home' %}" class="hover:text-blue-400 transition">Home</a>
+            <a href="{% url 'about' %}" class="hover:text-blue-400 transition">Sobre</a>
+            <a href="#contato" class="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-lg transition">Contato</a>
+        </div>
+    </div>
 </nav>
 
+<header class="py-24 text-center px-6 bg-gradient-to-b from-blue-900/20 to-transparent">
+    <img src="{% static 'images/logo.png' %}" alt="Stolus" class="w-32 mx-auto mb-8">
+    <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tighter">Software <span class="text-blue-500">sob medida.</span></h1>
+    <p class="text-slate-400 max-w-2xl mx-auto text-lg mb-10">Sistemas modernos e automações inteligentes para escalar seu negócio.</p>
+    <a href="https://wa.me/5562994278195" target="_blank" class="bg-green-600 hover:bg-green-500 text-white font-bold py-4 px-10 rounded-full shadow-2xl transition-all hover:scale-105 inline-flex items-center gap-3">
+        <i class="fa-brands fa-whatsapp text-xl"></i> Falar com Especialista
+    </a>
+</header>
 
-<header>
-    <div class="hero">
-        <img src="{% static 'images/logo.png' %}" alt="Stolus">
-        <h1>Desenvolvimento de Software Sob Medida</h1>
-        <p>Sistemas web modernos, automações inteligentes e soluções escaláveis para o seu negócio.</p>
+<section class="max-w-7xl mx-auto px-6 py-20">
+    <h2 class="text-3xl font-bold text-center mb-16">Nossas Soluções</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="glass p-8 rounded-3xl hover:border-blue-500/50 transition-all group">
+            <i class="fa-solid fa-gear text-3xl text-blue-500 mb-6"></i>
+            <h3 class="text-xl font-bold mb-4">Sistemas Admin</h3>
+            <p class="text-slate-400 text-sm mb-6">Controle total de cadastros, permissões e gestão empresarial.</p>
+            <span class="text-xs font-bold text-blue-400 uppercase tracking-widest">Sob Consulta</span>
+        </div>
+        <div class="glass p-8 rounded-3xl hover:border-blue-500/50 transition-all group">
+            <i class="fa-solid fa-calendar-days text-3xl text-blue-500 mb-6"></i>
+            <h3 class="text-xl font-bold mb-4">Agendamento</h3>
+            <p class="text-slate-400 text-sm mb-6">Automatize sua agenda e evite conflitos de horários de forma inteligente.</p>
+            <span class="text-xs font-bold text-blue-400 uppercase tracking-widest">Sob Consulta</span>
+        </div>
+        <div class="glass p-8 rounded-3xl hover:border-blue-500/50 transition-all group">
+            <i class="fa-solid fa-bullseye text-3xl text-blue-500 mb-6"></i>
+            <h3 class="text-xl font-bold mb-4">Landing Pages</h3>
+            <p class="text-slate-400 text-sm mb-6">Páginas de alta conversão integradas diretamente com seu WhatsApp.</p>
+            <span class="text-xs font-bold text-blue-400 uppercase tracking-widest">Sob Consulta</span>
+        </div>
+    </div>
+</section>
 
-        <div class="hero-actions">
-            <a href="https://wa.me/5562994278195?text=Olá,%20vim%20pelo%20site%20da%20Stolus%20e%20gostaria%20de%20mais%20informações%20sobre%20desenvolvimento%20de%20software."
-               class="btn-whatsapp" target="_blank">
-                <i class="fa-brands fa-whatsapp"></i> Falar no WhatsApp
-            </a>
+<section id="contato" class="max-w-2xl mx-auto px-6 py-24">
+    <div class="glass p-10 md:p-16 rounded-[2.5rem] border border-blue-500/20 shadow-2xl">
+        <h2 class="text-3xl font-black text-center mb-4">Inicie seu projeto</h2>
+        <p class="text-slate-400 text-center mb-10">Diga-nos o que você precisa e retornaremos em breve.</p>
+        <form method="POST" class="flex flex-col">
+            {% csrf_token %}
+            {{ form.name }}
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {{ form.email }}
+                {{ form.phone }}
+            </div>
+            {% if form.services %}{{ form.services }}{% endif %}
+            
+            <button type="submit" class="bg-blue-600 hover:bg-blue-500 text-white font-black py-4 rounded-xl shadow-lg transition-all hover:-translate-y-1 mt-4">
+                ENVIAR MENSAGEM
+            </button>
+        </form>
+    </div>
+</section>
 
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/matheus-ryan-74110521b/" target="_blank" title="LinkedIn">
-                    <i class="fa-brands fa-linkedin"></i>
-                </a>
-                <a href="https://github.com/mathRyan889" target="_blank" title="GitHub">
-                    <i class="fa-brands fa-github"></i>
-                </a>
+<footer class="bg-slate-950 border-t border-slate-900 pt-20 pb-10 px-6">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 text-sm">
+        <div>
+            <h3 class="text-gold font-black text-xl mb-4 uppercase">Stolus ⚜️</h3>
+            <p class="text-slate-400">Transformando ideias em código sólido e escalável.</p>
+        </div>
+        <div>
+            <h4 class="font-bold text-white mb-6 uppercase tracking-widest">Links</h4>
+            <ul class="text-slate-400 space-y-3">
+                <li><a href="{% url 'home' %}" class="hover:text-blue-400">Página Inicial</a></li>
+                <li><a href="{% url 'about' %}" class="hover:text-blue-400">Sobre Mim</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="font-bold text-white mb-6 uppercase tracking-widest">Soluções</h4>
+            <ul class="text-slate-400 space-y-3">
+                <li><a href="{% url 'about' %}#sistemas" class="hover:text-blue-400">Sistemas Admin</a></li>
+                <li><a href="{% url 'about' %}#financeiro" class="hover:text-blue-400">Financeiro</a></li>
+                <li><a href="{% url 'about' %}#api" class="hover:text-blue-400">APIs</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="font-bold text-white mb-6 uppercase tracking-widest">Social</h4>
+            <div class="flex space-x-6 text-2xl">
+                <a href="https://www.linkedin.com/in/matheus-ryan-74110521b/" class="text-slate-400 hover:text-blue-500"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/mathRyan889" class="text-slate-400 hover:text-white"><i class="fa-brands fa-github"></i></a>
             </div>
         </div>
     </div>
-</header>
-
-<section>
-    <h2>Soluções que Desenvolvemos</h2>
-
-    <div class="solution-grid">
-        <div class="solution-card">
-            <i class="fa-solid fa-gear"></i>
-            <h3>Sistemas Administrativos</h3>
-            <p>Controle total do seu negócio em um único sistema.</p>
-            <ul>
-                <li>Cadastros e gestão</li>
-                <li>Login e permissões</li>
-                <li>Painel administrativo</li>
-            </ul>
-            <span class="solution-price">Sob consulta</span>
-        </div>
-
-        <div class="solution-card">
-            <i class="fa-solid fa-calendar-days"></i>
-            <h3>Sistemas de Agendamento</h3>
-            <p>Automatize horários e evite conflitos.</p>
-            <ul>
-                <li>Agenda inteligente</li>
-                <li>Status de atendimentos</li>
-                <li>Gestão por usuário</li>
-            </ul>
-            <span class="solution-price">Sob consulta</span>
-        </div>
-
-        <div class="solution-card">
-            <i class="fa-solid fa-wallet"></i>
-            <h3>Financeiro & Estoque</h3>
-            <p>Organização simples e eficiente.</p>
-            <ul>
-                <li>Entradas e saídas</li>
-                <li>Relatórios mensais</li>
-                <li>Controle de estoque</li>
-            </ul>
-            <span class="solution-price">Sob consulta</span>
-        </div>
-
-        <div class="solution-card">
-            <i class="fa-solid fa-server"></i>
-            <h3>APIs e Back-end</h3>
-            <p>Back-end seguro para apps e sites.</p>
-            <ul>
-                <li>API REST</li>
-                <li>Autenticação</li>
-                <li>Integrações</li>
-            </ul>
-            <span class="solution-price">Sob consulta</span>
-        </div>
-
-        <div class="solution-card">
-            <i class="fa-solid fa-user-shield"></i>
-            <h3>Área do Cliente</h3>
-            <p>Portais exclusivos para seus clientes.</p>
-            <ul>
-                <li>Login seguro</li>
-                <li>Histórico</li>
-                <li>Dados personalizados</li>
-            </ul>
-            <span class="solution-price">Sob consulta</span>
-        </div>
-
-        <div class="solution-card">
-            <i class="fa-solid fa-bullseye"></i>
-            <h3>Landing Pages</h3>
-            <p>Páginas focadas em conversão.</p>
-            <ul>
-                <li>Design moderno</li>
-                <li>WhatsApp integrado</li>
-                <li>SEO básico</li>
-            </ul>
-            <span class="solution-price">Sob consulta</span>
-        </div>
-    </div>
-</section>
-
-<section id="contato">
-    <h2>Entre em Contato</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.name }}
-        {{ form.email }}
-        {{ form.phone }}
-        <button type="submit">Enviar</button>
-    </form>
-</section>
-
-<footer>
-    © 2026 — Stolus Desenvolvimento de Software
-
-    <div class="social-links">
-        <a href="https://www.linkedin.com/in/matheus-ryan-74110521b/" target="_blank">
-            <i class="fa-brands fa-linkedin"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/matheus-ryan-74110521b/" target="_blank">
-            <i class="fa-brands fa-github"></i>
-        </a>
-    </div>
 </footer>
 
-<a href="https://wa.me/5562994278195?text=Olá,%20vim%20pelo%20site%20da%20Stolus%20e%20gostaria%20de%20mais%20informações%20sobre%20desenvolvimento%20de%20software."
-   class="whatsapp-float" target="_blank">
-    <i class="fa-brands fa-whatsapp"></i>
+<a href="https://wa.me/5562994278195" target="_blank" class="fixed bottom-6 right-6 bg-green-600 w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all z-50">
+    <i class="fa-brands fa-whatsapp text-white text-3xl"></i>
 </a>
 
 </body>
