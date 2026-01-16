@@ -51,6 +51,10 @@
         }
         .btn-main:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(56, 189, 248, 0.3); }
 
+        .hero-social { margin-top: 30px; display: flex; justify-content: center; gap: 20px; }
+        .hero-social a { color: var(--text-dim); font-size: 1.5rem; transition: 0.3s; }
+        .hero-social a:hover { color: var(--primary); transform: scale(1.1); }
+
         /* Grid de Soluções */
         section { max-width: 1200px; margin: auto; padding: 80px 20px; }
         .section-title { text-align: center; margin-bottom: 60px; font-size: 2.5rem; font-weight: 700; }
@@ -97,7 +101,7 @@
         .footer-links h4 { margin-bottom: 20px; color: var(--primary); font-size: 0.9rem; text-transform: uppercase; }
         .footer-links ul { list-style: none; }
         .footer-links li { margin-bottom: 10px; }
-        .footer-links a { color: var(--text-dim); text-decoration: none; transition: 0.3s; }
+        .footer-links a { color: var(--text-dim); text-decoration: none; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
         .footer-links a:hover { color: var(--text-main); }
         .copyright { text-align: center; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; }
 
@@ -132,6 +136,11 @@
         <a href="https://wa.me/5562994278195" class="btn-main">
             <i class="fa-brands fa-whatsapp"></i> Iniciar um Projeto
         </a>
+        
+        <div class="hero-social">
+            <a href="https://github.com/mathRyan889" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/matheus-ryan-74110521b/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
     </div>
 </header>
 
@@ -208,10 +217,11 @@
             </ul>
         </div>
         <div class="footer-links">
-            <h4>Contato</h4>
+            <h4>Social & Contato</h4>
             <ul>
-                <li><a href="https://wa.me/5562994278195">WhatsApp</a></li>
-                <li><a href="https://www.linkedin.com/in/matheus-ryan-74110521b/">LinkedIn</a></li>
+                <li><a href="https://wa.me/5562994278195" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a></li>
+                <li><a href="https://www.linkedin.com/in/matheus-ryan-74110521b/" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></li>
+                <li><a href="https://github.com/mathRyan889" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a></li>
             </ul>
         </div>
     </div>
