@@ -26,7 +26,10 @@
             border-bottom: 1px solid rgba(255,255,255,0.05);
             padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;
         }
+        .nav-logo-container { display: flex; align-items: center; gap: 15px; }
         .nav-logo img { height: 40px; }
+        .nav-logo-text { font-weight: 800; font-size: 0.85rem; letter-spacing: 0.1em; color: var(--text-main); }
+        
         .nav-links { display: flex; gap: 30px; list-style: none; }
         .nav-links a { color: var(--text-main); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: 0.3s; }
         .nav-links a:hover { color: var(--primary); }
@@ -53,16 +56,16 @@
         .section-title { text-align: center; margin-bottom: 60px; font-size: 2.5rem; font-weight: 700; }
 
         .solution-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;
         }
         .solution-card {
             background: var(--card-bg); border: 1px solid rgba(255,255,255,0.05);
-            padding: 40px; border-radius: 24px; transition: 0.4s;
+            padding: 40px; border-radius: 24px; transition: 0.4s; display: flex; flex-direction: column;
         }
         .solution-card:hover { border-color: var(--primary); transform: translateY(-5px); background: rgba(30, 41, 59, 0.8); }
         .solution-card i { font-size: 2rem; color: var(--primary); margin-bottom: 20px; }
-        .solution-card h3 { margin-bottom: 15px; font-size: 1.5rem; }
-        .solution-card p { color: var(--text-dim); font-size: 0.95rem; margin-bottom: 20px; }
+        .solution-card h3 { margin-bottom: 15px; font-size: 1.4rem; }
+        .solution-card p { color: var(--text-dim); font-size: 0.95rem; margin-bottom: 20px; flex-grow: 1; }
         .solution-card ul { list-style: none; color: var(--text-main); font-size: 0.9rem; }
         .solution-card ul li { margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
         .solution-card ul li::before { content: "→"; color: var(--primary); font-weight: bold; }
@@ -101,14 +104,18 @@
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .hero h1 { font-size: 2.2rem; }
+            .nav-logo-text { display: none; }
         }
     </style>
 </head>
 <body>
 
 <nav class="navbar">
-    <div class="nav-logo">
-        <img src="{% static 'images/logo.png' %}" alt="Stolus">
+    <div class="nav-logo-container">
+        <div class="nav-logo">
+            <img src="{% static 'images/logo.png' %}" alt="Stolus">
+        </div>
+        <span class="nav-logo-text">STOLUS DESENVOLVIMENTO DE SOFTWARE</span>
     </div>
     <ul class="nav-links">
         <li><a href="{% url 'home' %}">Home</a></li>
@@ -132,6 +139,17 @@
     <h2 class="section-title">O que construímos</h2>
     <div class="solution-grid">
         <div class="solution-card">
+            <i class="fa-solid fa-rocket"></i>
+            <h3>Captação & Landing Pages</h3>
+            <p>Páginas de alta conversão focadas em transformar visitantes em clientes reais para o seu negócio.</p>
+            <ul>
+                <li>Design Persuasivo</li>
+                <li>Otimização de Velocidade</li>
+                <li>Integração com WhatsApp</li>
+            </ul>
+        </div>
+
+        <div class="solution-card">
             <i class="fa-solid fa-laptop-code"></i>
             <h3>Sistemas de Gestão</h3>
             <p>ERPs e Dashboards administrativos para controle total de processos internos.</p>
@@ -140,6 +158,7 @@
                 <li>Relatórios em tempo real</li>
             </ul>
         </div>
+        
         <div class="solution-card">
             <i class="fa-solid fa-calendar-check"></i>
             <h3>Agendamento Inteligente</h3>
@@ -149,6 +168,7 @@
                 <li>Gestão de equipe</li>
             </ul>
         </div>
+
         <div class="solution-card">
             <i class="fa-solid fa-bolt"></i>
             <h3>Automações & APIs</h3>
