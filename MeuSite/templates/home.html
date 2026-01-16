@@ -5,125 +5,200 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stolus | Desenvolvimento de Software</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #020617; color: #f8fafc; }
-        .glass { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
-        .text-gold {
-            background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        :root {
+            --bg-dark: #020617;
+            --card-bg: rgba(30, 41, 59, 0.5);
+            --primary: #38bdf8;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
         }
-        /* Estilo para os inputs do Django Form */
-        input, select, textarea {
-            width: 100% !important; background-color: rgba(15, 23, 42, 0.6) !important;
-            border: 1px solid rgba(59, 130, 246, 0.2) !important; padding: 1rem !important;
-            border-radius: 0.75rem !important; color: #fff !important; outline: none; margin-bottom: 1rem;
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+
+        /* Navbar SaaS Style */
+        .navbar {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: rgba(2, 6, 23, 0.8); backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;
         }
-        select option { background-color: #0f172a; color: #fff; }
+        .nav-logo img { height: 40px; }
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { color: var(--text-main); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* Hero */
+        header {
+            padding: 160px 20px 100px;
+            text-align: center;
+            background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.08), transparent);
+        }
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 20px; }
+        .hero span { color: var(--primary); }
+        .hero p { max-width: 650px; margin: 0 auto 40px; color: var(--text-dim); font-size: 1.2rem; }
+
+        .btn-main {
+            padding: 16px 32px; background: var(--primary); color: #000;
+            border-radius: 12px; font-weight: 700; text-decoration: none;
+            display: inline-flex; align-items: center; gap: 10px; transition: 0.3s;
+        }
+        .btn-main:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(56, 189, 248, 0.3); }
+
+        /* Grid de Soluções */
+        section { max-width: 1200px; margin: auto; padding: 80px 20px; }
+        .section-title { text-align: center; margin-bottom: 60px; font-size: 2.5rem; font-weight: 700; }
+
+        .solution-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;
+        }
+        .solution-card {
+            background: var(--card-bg); border: 1px solid rgba(255,255,255,0.05);
+            padding: 40px; border-radius: 24px; transition: 0.4s;
+        }
+        .solution-card:hover { border-color: var(--primary); transform: translateY(-5px); background: rgba(30, 41, 59, 0.8); }
+        .solution-card i { font-size: 2rem; color: var(--primary); margin-bottom: 20px; }
+        .solution-card h3 { margin-bottom: 15px; font-size: 1.5rem; }
+        .solution-card p { color: var(--text-dim); font-size: 0.95rem; margin-bottom: 20px; }
+        .solution-card ul { list-style: none; color: var(--text-main); font-size: 0.9rem; }
+        .solution-card ul li { margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+        .solution-card ul li::before { content: "→"; color: var(--primary); font-weight: bold; }
+
+        /* Contato SaaS Form */
+        .contact-box {
+            max-width: 600px; margin: 40px auto; background: #0f172a;
+            padding: 40px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.05);
+        }
+        form input, form select, form textarea {
+            width: 100%; padding: 15px; margin-bottom: 15px; background: #1e293b;
+            border: 1px solid #334155; border-radius: 10px; color: white; outline: none;
+        }
+        form button {
+            width: 100%; padding: 15px; background: var(--primary); border: none;
+            border-radius: 10px; font-weight: 700; cursor: pointer; transition: 0.3s;
+        }
+        form button:hover { background: #7dd3fc; }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.05); padding: 60px 20px 30px; background: #010409;
+        }
+        .footer-content {
+            max-width: 1200px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px; margin-bottom: 40px;
+        }
+        .footer-brand img { height: 35px; margin-bottom: 15px; }
+        .footer-links h4 { margin-bottom: 20px; color: var(--primary); font-size: 0.9rem; text-transform: uppercase; }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: var(--text-dim); text-decoration: none; transition: 0.3s; }
+        .footer-links a:hover { color: var(--text-main); }
+        .copyright { text-align: center; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.2rem; }
+        }
     </style>
 </head>
-<body class="antialiased">
+<body>
 
-<nav class="sticky top-0 z-50 glass border-b border-slate-800">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <a href="{% url 'home' %}" class="text-2xl font-black text-gold tracking-tighter uppercase">STOLUS ⚜️</a>
-        <div class="hidden md:flex space-x-8 text-xs font-bold tracking-widest uppercase">
-            <a href="{% url 'home' %}" class="hover:text-blue-400 transition">Home</a>
-            <a href="{% url 'about' %}" class="hover:text-blue-400 transition">Sobre</a>
-            <a href="#contato" class="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-lg transition">Contato</a>
-        </div>
+<nav class="navbar">
+    <div class="nav-logo">
+        <img src="{% static 'images/logo.png' %}" alt="Stolus">
     </div>
+    <ul class="nav-links">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'about' %}">Sobre a Stolus</a></li>
+        <li><a href="#contato">Contato</a></li>
+    </ul>
 </nav>
 
-<header class="py-24 text-center px-6 bg-gradient-to-b from-blue-900/20 to-transparent">
-    <img src="{% static 'images/logo.png' %}" alt="Stolus" class="w-32 mx-auto mb-8">
-    <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tighter">Software <span class="text-blue-500">sob medida.</span></h1>
-    <p class="text-slate-400 max-w-2xl mx-auto text-lg mb-10">Sistemas modernos e automações inteligentes para escalar seu negócio.</p>
-    <a href="https://wa.me/5562994278195" target="_blank" class="bg-green-600 hover:bg-green-500 text-white font-bold py-4 px-10 rounded-full shadow-2xl transition-all hover:scale-105 inline-flex items-center gap-3">
-        <i class="fa-brands fa-whatsapp text-xl"></i> Falar com Especialista
-    </a>
+<header>
+    <div class="hero">
+        <img src="{% static 'images/logo.png' %}" alt="Stolus" style="width: 100px; margin-bottom: 30px;">
+        <h1>Soluções em Software <span>Sob Medida</span></h1>
+        <p>A Stolus transforma complexidade em eficiência. Criamos sistemas que organizam sua operação e aceleram seu crescimento.</p>
+        <a href="https://wa.me/5562994278195" class="btn-main">
+            <i class="fa-brands fa-whatsapp"></i> Iniciar um Projeto
+        </a>
+    </div>
 </header>
 
-<section class="max-w-7xl mx-auto px-6 py-20">
-    <h2 class="text-3xl font-bold text-center mb-16">Nossas Soluções</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="glass p-8 rounded-3xl hover:border-blue-500/50 transition-all group">
-            <i class="fa-solid fa-gear text-3xl text-blue-500 mb-6"></i>
-            <h3 class="text-xl font-bold mb-4">Sistemas Admin</h3>
-            <p class="text-slate-400 text-sm mb-6">Controle total de cadastros, permissões e gestão empresarial.</p>
-            <span class="text-xs font-bold text-blue-400 uppercase tracking-widest">Sob Consulta</span>
+<section id="servicos">
+    <h2 class="section-title">O que construímos</h2>
+    <div class="solution-grid">
+        <div class="solution-card">
+            <i class="fa-solid fa-laptop-code"></i>
+            <h3>Sistemas de Gestão</h3>
+            <p>ERPs e Dashboards administrativos para controle total de processos internos.</p>
+            <ul>
+                <li>Multi-usuários</li>
+                <li>Relatórios em tempo real</li>
+            </ul>
         </div>
-        <div class="glass p-8 rounded-3xl hover:border-blue-500/50 transition-all group">
-            <i class="fa-solid fa-calendar-days text-3xl text-blue-500 mb-6"></i>
-            <h3 class="text-xl font-bold mb-4">Agendamento</h3>
-            <p class="text-slate-400 text-sm mb-6">Automatize sua agenda e evite conflitos de horários de forma inteligente.</p>
-            <span class="text-xs font-bold text-blue-400 uppercase tracking-widest">Sob Consulta</span>
+        <div class="solution-card">
+            <i class="fa-solid fa-calendar-check"></i>
+            <h3>Agendamento Inteligente</h3>
+            <p>Plataformas completas para reservas, consultas e fluxos de horários automáticos.</p>
+            <ul>
+                <li>Lembretes automáticos</li>
+                <li>Gestão de equipe</li>
+            </ul>
         </div>
-        <div class="glass p-8 rounded-3xl hover:border-blue-500/50 transition-all group">
-            <i class="fa-solid fa-bullseye text-3xl text-blue-500 mb-6"></i>
-            <h3 class="text-xl font-bold mb-4">Landing Pages</h3>
-            <p class="text-slate-400 text-sm mb-6">Páginas de alta conversão integradas diretamente com seu WhatsApp.</p>
-            <span class="text-xs font-bold text-blue-400 uppercase tracking-widest">Sob Consulta</span>
+        <div class="solution-card">
+            <i class="fa-solid fa-bolt"></i>
+            <h3>Automações & APIs</h3>
+            <p>Integrações entre ferramentas e criação de infraestrutura back-end robusta.</p>
+            <ul>
+                <li>Segurança de dados</li>
+                <li>Escalabilidade</li>
+            </ul>
         </div>
     </div>
 </section>
 
-<section id="contato" class="max-w-2xl mx-auto px-6 py-24">
-    <div class="glass p-10 md:p-16 rounded-[2.5rem] border border-blue-500/20 shadow-2xl">
-        <h2 class="text-3xl font-black text-center mb-4">Inicie seu projeto</h2>
-        <p class="text-slate-400 text-center mb-10">Diga-nos o que você precisa e retornaremos em breve.</p>
-        <form method="POST" class="flex flex-col">
+<section id="contato">
+    <h2 class="section-title">Fale Conosco</h2>
+    <div class="contact-box">
+        <form method="post">
             {% csrf_token %}
             {{ form.name }}
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {{ form.email }}
-                {{ form.phone }}
-            </div>
-            {% if form.services %}{{ form.services }}{% endif %}
-            
-            <button type="submit" class="bg-blue-600 hover:bg-blue-500 text-white font-black py-4 rounded-xl shadow-lg transition-all hover:-translate-y-1 mt-4">
-                ENVIAR MENSAGEM
-            </button>
+            {{ form.email }}
+            {{ form.phone }}
+            <button type="submit">Enviar Proposta</button>
         </form>
     </div>
 </section>
 
-<footer class="bg-slate-950 border-t border-slate-900 pt-20 pb-10 px-6">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 text-sm">
-        <div>
-            <h3 class="text-gold font-black text-xl mb-4 uppercase">Stolus ⚜️</h3>
-            <p class="text-slate-400">Transformando ideias em código sólido e escalável.</p>
+<footer>
+    <div class="footer-content">
+        <div class="footer-brand">
+            <img src="{% static 'images/logo.png' %}" alt="Stolus">
+            <p style="color: var(--text-dim); font-size: 0.9rem;">Desenvolvimento de software focado em resultados reais.</p>
         </div>
-        <div>
-            <h4 class="font-bold text-white mb-6 uppercase tracking-widest">Links</h4>
-            <ul class="text-slate-400 space-y-3">
-                <li><a href="{% url 'home' %}" class="hover:text-blue-400">Página Inicial</a></li>
-                <li><a href="{% url 'about' %}" class="hover:text-blue-400">Sobre Mim</a></li>
+        <div class="footer-links">
+            <h4>Navegação</h4>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">Sobre</a></li>
             </ul>
         </div>
-        <div>
-            <h4 class="font-bold text-white mb-6 uppercase tracking-widest">Soluções</h4>
-            <ul class="text-slate-400 space-y-3">
-                <li><a href="{% url 'about' %}#sistemas" class="hover:text-blue-400">Sistemas Admin</a></li>
-                <li><a href="{% url 'about' %}#financeiro" class="hover:text-blue-400">Financeiro</a></li>
-                <li><a href="{% url 'about' %}#api" class="hover:text-blue-400">APIs</a></li>
+        <div class="footer-links">
+            <h4>Contato</h4>
+            <ul>
+                <li><a href="https://wa.me/5562994278195">WhatsApp</a></li>
+                <li><a href="https://www.linkedin.com/in/matheus-ryan-74110521b/">LinkedIn</a></li>
             </ul>
-        </div>
-        <div>
-            <h4 class="font-bold text-white mb-6 uppercase tracking-widest">Social</h4>
-            <div class="flex space-x-6 text-2xl">
-                <a href="https://www.linkedin.com/in/matheus-ryan-74110521b/" class="text-slate-400 hover:text-blue-500"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://github.com/mathRyan889" class="text-slate-400 hover:text-white"><i class="fa-brands fa-github"></i></a>
-            </div>
         </div>
     </div>
+    <div class="copyright">
+        © 2026 Stolus Desenvolvimento de Software — Todos os direitos reservados.
+    </div>
 </footer>
-
-<a href="https://wa.me/5562994278195" target="_blank" class="fixed bottom-6 right-6 bg-green-600 w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all z-50">
-    <i class="fa-brands fa-whatsapp text-white text-3xl"></i>
-</a>
 
 </body>
 </html>

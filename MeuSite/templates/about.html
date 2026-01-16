@@ -5,89 +5,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre | Stolus</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #020617; color: #f8fafc; }
-        .glass { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
-        .text-gold {
-            background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        :root { --bg-dark: #020617; --primary: #38bdf8; --text-dim: #94a3b8; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--bg-dark); color: #fff; line-height: 1.8; }
+        
+        .navbar {
+            padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
+        .navbar img { height: 35px; }
+
+        section { max-width: 850px; margin: auto; padding: 80px 20px; }
+        h2 { font-size: 2.5rem; margin-bottom: 30px; color: var(--primary); }
+        p { margin-bottom: 25px; color: var(--text-dim); font-size: 1.1rem; }
+
+        /* Estilo SaaS Perfil */
+        .profile-card {
+            display: flex; align-items: center; gap: 40px; background: rgba(30, 41, 59, 0.3);
+            padding: 40px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.05); margin: 40px 0;
+        }
+        .profile-card img { width: 180px; height: 180px; border-radius: 20px; object-fit: cover; border: 2px solid var(--primary); }
+        
+        /* Accordion Style */
+        .accordion-item { margin-bottom: 15px; border-radius: 12px; overflow: hidden; background: #0f172a; border: 1px solid #1e293b; }
+        .accordion-header {
+            width: 100%; padding: 20px; background: none; border: none; color: #fff;
+            text-align: left; font-size: 1.1rem; font-weight: 600; cursor: pointer;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .accordion-content { padding: 0 20px; max-height: 0; overflow: hidden; transition: 0.3s ease-out; color: var(--text-dim); }
+        .accordion-item.active .accordion-content { padding: 0 20px 20px; max-height: 200px; }
+
+        .cta-box { text-align: center; background: linear-gradient(to right, #0f172a, #1e3a8a); padding: 80px 20px; border-radius: 40px; margin-top: 60px; }
+        
+        @media (max-width: 768px) { .profile-card { flex-direction: column; text-align: center; } }
     </style>
 </head>
-<body class="antialiased">
+<body>
 
-<nav class="sticky top-0 z-50 glass border-b border-slate-800">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <a href="{% url 'home' %}" class="text-2xl font-black text-gold tracking-tighter uppercase">STOLUS ⚜️</a>
-        <a href="{% url 'home' %}" class="text-xs font-bold tracking-widest uppercase hover:text-blue-400">Voltar para Home</a>
-    </div>
+<nav class="navbar">
+    <a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="Stolus"></a>
+    <a href="{% url 'home' %}" style="color: #fff; text-decoration: none; font-weight: bold;">← Voltar</a>
 </nav>
 
-<main class="max-w-4xl mx-auto px-6 py-20">
-    <section class="flex flex-col md:flex-row items-center gap-12 mb-24">
-        <img src="{% static 'images/matheus.jpg' %}" alt="Matheus Ryan" class="w-48 h-48 rounded-full border-4 border-blue-600 shadow-2xl object-cover">
+<section>
+    <h2>🧭 Sobre a Stolus</h2>
+    <p>A <strong>Stolus</strong> surgiu para preencher a lacuna entre ideias ambiciosas e a execução técnica impecável. No mercado atual, ter um site não é suficiente; é preciso ter ferramentas que trabalhem por você.</p>
+    <p>Nossa missão é democratizar o software de alta performance para empresas que buscam organização. Desenvolvemos desde painéis administrativos robustos até APIs que conectam seu negócio ao mundo, sempre priorizando a <strong>escalabilidade</strong> e a <strong>experiência do usuário</strong>.</p>
+</section>
+
+<section>
+    <h2>Quem sou eu</h2>
+    <div class="profile-card">
+        <img src="{% static 'images/matheus.jpg' %}" alt="Matheus Ryan">
         <div>
-            <h1 class="text-4xl font-black mb-4 uppercase tracking-tighter">Matheus Ryan</h1>
-            <p class="text-blue-400 font-bold text-sm uppercase tracking-widest mb-6">Especialista Django & Sistemas Web</p>
-            <p class="text-slate-400 text-lg leading-relaxed">Meu foco é entender o seu problema e transformá-lo em uma solução tecnológica organizada, segura e fácil de operar.</p>
-        </div>
-    </section>
-
-    <h2 class="text-2xl font-black mb-10 uppercase tracking-widest text-center">Nossos Pilares</h2>
-    <div class="space-y-4">
-        <div class="glass rounded-2xl overflow-hidden border border-slate-800">
-            <button onclick="toggleAccordion('seguranca')" class="w-full p-6 text-left flex justify-between items-center group">
-                <span class="font-bold text-slate-200 group-hover:text-blue-400 transition">Sistemas Seguros e Estruturados</span>
-                <i class="fas fa-chevron-down text-slate-500" id="icon-seguranca"></i>
-            </button>
-            <div id="seguranca" class="hidden p-6 pt-0 text-slate-400 text-sm border-t border-slate-800/50 mt-4">
-                Utilizamos o framework Django, padrão de mercado para segurança e estabilidade, garantindo que seus dados e os de seus clientes estejam protegidos.
-            </div>
-        </div>
-
-        <div class="glass rounded-2xl overflow-hidden border border-slate-800">
-            <button onclick="toggleAccordion('solucao')" class="w-full p-6 text-left flex justify-between items-center group">
-                <span class="font-bold text-slate-200 group-hover:text-blue-400 transition">Foco na Solução do Problema</span>
-                <i class="fas fa-chevron-down text-slate-500" id="icon-solucao"></i>
-            </button>
-            <div id="solucao" class="hidden p-6 pt-0 text-slate-400 text-sm border-t border-slate-800/50 mt-4">
-                Mais do que código, entregamos ferramentas de produtividade. Cada função do sistema é pensada para remover um obstáculo do seu dia a dia.
-            </div>
-        </div>
-
-        <div class="glass rounded-2xl overflow-hidden border border-slate-800">
-            <button onclick="toggleAccordion('transparencia')" class="w-full p-6 text-left flex justify-between items-center group">
-                <span class="font-bold text-slate-200 group-hover:text-blue-400 transition">Transparência e Suporte</span>
-                <i class="fas fa-chevron-down text-slate-500" id="icon-transparencia"></i>
-            </button>
-            <div id="transparencia" class="hidden p-6 pt-0 text-slate-400 text-sm border-t border-slate-800/50 mt-4">
-                Comunicação direta e acompanhamento constante durante e após a entrega do projeto.
-            </div>
+            <h3>Matheus Ryan</h3>
+            <p style="margin-top: 10px;">Desenvolvedor Full-stack especializado no ecossistema Python/Django. Minha paixão é traduzir regras de negócio complexas em interfaces simples e códigos limpos.</p>
         </div>
     </div>
-</main>
+</section>
 
-<footer class="bg-slate-950 border-t border-slate-900 pt-10 pb-10 text-center text-slate-600 text-xs">
-    © 2026 — Stolus Desenvolvimento de Software
+<section>
+    <h2>Como trabalhamos</h2>
+    <div class="accordion">
+        <div class="accordion-item">
+            <button class="accordion-header">01. Diagnóstico e Estratégia <i class="fa-solid fa-plus"></i></button>
+            <div class="accordion-content">Entendemos profundamente o seu gargalo operacional antes de sugerir qualquer linha de código.</div>
+        </div>
+        <div class="accordion-item">
+            <button class="accordion-header">02. Desenvolvimento Ágil <i class="fa-solid fa-plus"></i></button>
+            <div class="accordion-content">Você acompanha o progresso em etapas, garantindo que o software evolua conforme sua expectativa.</div>
+        </div>
+        <div class="accordion-item">
+            <button class="accordion-header">03. Entrega e Suporte <i class="fa-solid fa-plus"></i></button>
+            <div class="accordion-content">Não apenas entregamos o código; garantimos que sua equipe saiba operar e que o sistema esteja sempre seguro.</div>
+        </div>
+    </div>
+</section>
+
+<div class="cta-box">
+    <h2 style="color: #fff;">Pronto para o próximo nível?</h2>
+    <p style="color: rgba(255,255,255,0.7);">Vamos transformar seu processo manual em um sistema automático.</p>
+    <a href="https://wa.me/5562994278195" style="display: inline-block; padding: 15px 40px; background: var(--primary); color: #000; border-radius: 12px; text-decoration: none; font-weight: bold;">Conversar agora</a>
+</div>
+
+<footer style="text-align: center; padding: 40px; color: var(--text-dim); font-size: 0.8rem;">
+    © 2026 Stolus — Tecnologia sob medida.
 </footer>
 
 <script>
-    function toggleAccordion(id) {
-        const content = document.getElementById(id);
-        const icon = document.getElementById('icon-' + id);
-        
-        // Fecha outros itens
-        document.querySelectorAll('[id^="icon-"]').forEach(i => i.style.transform = 'rotate(0deg)');
-        document.querySelectorAll('.hidden').forEach(c => {
-            if(c.id !== id) c.classList.add('hidden');
+    document.querySelectorAll('.accordion-header').forEach(button => {
+        button.addEventListener('click', () => {
+            const item = button.parentElement;
+            item.classList.toggle('active');
         });
-
-        // Abre o selecionado
-        content.classList.toggle('hidden');
-        icon.style.transform = content.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
-    }
+    });
 </script>
+
 </body>
 </html>
