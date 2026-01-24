@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class Lead(models.Model):
     name = models.CharField(max_length=100, verbose_name="Nome")
-    email = models.EmailField(verbose_name="Email")
+    email = models.EmailField(verbose_name="Email", blank=True, null=True)
     phone = models.CharField(max_length=15, verbose_name="Whatsapp")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Criado em")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Atualizado em")
