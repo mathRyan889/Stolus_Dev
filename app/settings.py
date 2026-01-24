@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['Stolus.pythonanywhere.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,6 +41,72 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'MeuSite',
 ]
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Múltipla Créditos Admin",
+    "site_header": "Múltipla Créditos",
+    "site_brand": "Múltipla Créditos",
+    "site_logo": "images/logo.png",  # Certifique-se de que está em seu folder static/images/
+    "login_logo": "images/logo.png",
+    "site_icon": "images/logo.png",
+    "welcome_sign": "Bem-vindo ao Gestor de Leads",
+    "copyright": "Múltipla Créditos © 2026",
+    "search_model": ["vendas.Lead"], # NomeDoApp.Modelo
+    
+    "topmenu_links": [
+        {"name": "Início", "url": "admin:index", "permissions": ["auth.view_user"]},
+        {"model": "vendas.Lead"},
+    ],
+
+    "show_sidebar": True,
+    "navigation_expanded": True,
+
+    "icons": {
+        "auth": "fas fa-users-cog",
+        "auth.user": "fas fa-user",
+        "auth.group": "fas fa-users",
+        # Altere "vendas" para o nome real da sua pasta de app
+        "vendas.Lead": "fas fa-address-card",
+        "vendas.Services": "fas fa-concierge-bell",
+        "vendas.Sales_Dashboard": "fas fa-chart-line",
+    },
+    
+    # Faz os botões de ação ficarem fixos no topo ao rolar a página
+    "changeform_format": "horizontal_tabs",
+}
+
+# Configuração visual (opcional - cores do painel)
+JAZZMIN_UI_TWEAKS = {
+    "navbar_small_text": False,
+    "footer_small_text": False,
+    "body_small_text": False,
+    "brand_small_text": False,
+    "brand_colour": "navbar-dark",
+    "accent": "accent-primary",
+    "navbar": "navbar-dark",
+    "no_navbar_border": False,
+    "navbar_fixed": False,
+    "layout_boxed": False,
+    "footer_fixed": False,
+    "sidebar_fixed": False,
+    "sidebar": "sidebar-dark-primary",
+    "sidebar_nav_small_text": False,
+    "sidebar_disable_expand": False,
+    "sidebar_nav_child_indent": False,
+    "sidebar_nav_compact_style": False,
+    "sidebar_nav_legacy_style": False,
+    "sidebar_nav_flat_style": False,
+    "theme": "default",
+    "dark_mode_theme": None,
+    "button_classes": {
+        "primary": "btn-primary",
+        "secondary": "btn-secondary",
+        "info": "btn-info",
+        "warning": "btn-warning",
+        "danger": "btn-danger",
+        "success": "btn-success"
+    }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
