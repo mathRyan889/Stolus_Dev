@@ -1,0 +1,15 @@
+/* Ajuste da logo na tela de login */
+.login-box .login-logo img {
+    max-width: 150px !important; /* Ajuste esse valor conforme desejar */
+    height: auto !important;
+    margin-bottom: 10px;
+    border-radius: 8px; /* Opcional: deixa as pontas arredondadas */
+}
+
+/* Centralizar a logo caso ela saia do eixo */
+.login-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}

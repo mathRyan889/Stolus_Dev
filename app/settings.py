@@ -73,6 +73,8 @@ JAZZMIN_SETTINGS = {
     
     # Faz os botões de ação ficarem fixos no topo ao rolar a página
     "changeform_format": "horizontal_tabs",
+
+    "custom_css": "css/admin_custom.css",
 }
 
 # Configuração visual (opcional - cores do painel)
