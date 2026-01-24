@@ -5,65 +5,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre | Stolus</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --bg: #000; --primary: #00f2ff; --dim: #a1a1aa; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background: var(--bg); color: #fff; }
+        :root { --brand: #0062ff; --dark: #0f172a; --text: #64748b; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background: #f8fafc; color: var(--dark); }
 
-        .back-nav { padding: 30px 5%; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .back-nav a { color: var(--primary); text-decoration: none; font-weight: 800; }
+        .nav-simple { padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; }
+        .container { max-width: 1000px; margin: 80px auto; padding: 0 5%; }
 
-        section { max-width: 1100px; margin: 80px auto; padding: 0 5%; }
-        h2 { font-size: 3.5rem; letter-spacing: -3px; margin-bottom: 40px; }
+        .title-badge { background: #e0ebff; color: var(--brand); padding: 8px 16px; border-radius: 100px; font-weight: 700; font-size: 0.8rem; }
+        h1 { font-size: 3rem; margin: 20px 0; letter-spacing: -1px; }
+
+        .story-section { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin: 60px 0; }
+        .story-section p { font-size: 1.1rem; color: var(--text); line-height: 1.8; margin-bottom: 20px; }
 
         .profile-card {
-            display: grid; grid-template-columns: 350px 1fr; gap: 50px;
-            background: #0a0a0a; border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 40px; padding: 50px; align-items: center;
+            background: white; border-radius: 24px; padding: 40px;
+            display: flex; align-items: center; gap: 30px; border: 1px solid #e2e8f0;
         }
-        .profile-card img { width: 100%; border-radius: 25px; filter: grayscale(1); transition: 0.5s; }
-        .profile-card:hover img { filter: grayscale(0); }
-        .profile-card h3 { font-size: 2rem; margin-bottom: 10px; }
-        .profile-card p { color: var(--dim); line-height: 1.6; margin-bottom: 20px; }
-
-        .tags { display: flex; flex-wrap: wrap; gap: 10px; }
-        .tag { background: #1a1a1a; padding: 8px 16px; border-radius: 100px; font-size: 0.8rem; border: 1px solid rgba(255,255,255,0.1); }
-
-        @media (max-width: 800px) { .profile-card { grid-template-columns: 1fr; padding: 30px; } }
+        .profile-card img { width: 120px; height: 120px; border-radius: 100px; object-fit: cover; border: 4px solid #f1f5f9; }
+        
+        @media (max-width: 768px) { .story-section { grid-template-columns: 1fr; } .profile-card { flex-direction: column; text-align: center; } }
     </style>
 </head>
 <body>
 
-<nav class="back-nav">
-    <a href="{% url 'home' %}">← VOLTAR</a>
+<nav class="nav-simple">
+    <img src="{% static 'images/logo.png' %}" style="height: 30px;">
+    <a href="{% url 'home' %}" style="text-decoration: none; color: var(--brand); font-weight: 700;">Voltar</a>
 </nav>
 
-<section>
-    <h2>O DNA DA STOLUS.</h2>
-    <p style="font-size: 1.4rem; color: var(--dim); max-width: 800px;">Nascemos para tirar o peso da tecnologia das costas do empresário. Pequenas e médias empresas merecem sistemas tão bons quanto os das gigantes.</p>
-</section>
+<div class="container">
+    <span class="title-badge">NOSSA HISTÓRIA</span>
+    <h1>Tecnologia para quem faz acontecer.</h1>
+    
+    <div class="story-section">
+        <div>
+            <p>A Stolus nasceu com a missão de democratizar o acesso a softwares de alta qualidade para empresas de médio porte.</p>
+            <p>Muitas vezes, imobiliárias e consultórios ficam presos a processos antigos por falta de uma ferramenta que entenda seu fluxo. Nós mudamos isso.</p>
+        </div>
+        <div>
+            <p>Construímos parcerias de longo prazo, onde o software evolui junto com o faturamento da sua empresa.</p>
+        </div>
+    </div>
 
-<section>
     <div class="profile-card">
         <img src="{% static 'images/matheus.jpg' %}" alt="Matheus Ryan">
         <div>
-            <h3>Matheus Ryan</h3>
-            <p>Especialista em Python/Django e fundador da Stolus. Minha missão é traduzir a complexidade do código em lucro e organização para o seu negócio.</p>
-            <div class="tags">
-                <span class="tag">Django Expert</span>
-                <span class="tag">Back-end Architecture</span>
-                <span class="tag">Business Automation</span>
-            </div>
+            <h3 style="font-size: 1.5rem;">Matheus Ryan</h3>
+            <p style="margin: 5px 0 15px; font-weight: 600; color: var(--brand);">Fundador & Desenvolvedor Full-Stack</p>
+            <p style="font-size: 0.95rem;">Especialista em criar arquiteturas de sistemas que priorizam a facilidade de uso e a segurança dos dados do seu negócio.</p>
         </div>
     </div>
-</section>
-
-<section style="text-align: center;">
-    <h2 style="font-size: 2.5rem;">VAMOS TRABALHAR?</h2>
-    <a href="https://wa.me/5562994278195" style="color: var(--primary); font-size: 1.5rem; text-decoration: none; font-weight: 800;">CHAMA NO WHATSAPP →</a>
-</section>
+</div>
 
 </body>
 </html>

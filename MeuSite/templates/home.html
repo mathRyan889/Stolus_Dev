@@ -4,174 +4,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stolus | Sistemas que Impulsionam Negócios</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>Stolus | Tecnologia Estratégica para Negócios</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --bg: #000000;
-            --card-bg: #0a0a0a;
-            --primary: #00f2ff;
-            --secondary: #7000ff;
-            --text: #ffffff;
-            --dim: #a1a1aa;
-            --border: rgba(255, 255, 255, 0.1);
+            --brand-primary: #0062ff;
+            --brand-dark: #0f172a;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --radius: 16px;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        body { background: var(--bg); color: var(--text); overflow-x: hidden; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background-color: var(--bg-light); color: var(--text-main); line-height: 1.6; }
 
-        /* Aurora Effect Background */
-        .aurora {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(0, 242, 255, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(112, 0, 255, 0.05) 0%, transparent 40%);
-            z-index: -1;
-        }
-
-        /* Navbar */
+        /* Navigation */
         .navbar {
-            position: fixed; top: 0; width: 100%; padding: 20px 5%;
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05); padding: 1.25rem 5%;
             display: flex; justify-content: space-between; align-items: center;
-            background: rgba(0,0,0,0.7); backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--border); z-index: 1000;
         }
-        .logo { font-weight: 800; font-size: 1.2rem; letter-spacing: -1px; display: flex; align-items: center; gap: 10px; }
-        .logo img { height: 28px; }
-        .nav-links a { color: var(--dim); text-decoration: none; font-size: 0.9rem; margin-left: 25px; transition: 0.3s; }
-        .nav-links a:hover { color: var(--primary); }
-
-        /* Hero */
-        .hero {
-            height: 100vh; display: flex; flex-direction: column; justify-content: center;
-            align-items: center; text-align: center; padding: 0 5%;
-        }
-        .hero h1 { 
-            font-size: clamp(3rem, 8vw, 6rem); font-weight: 800; letter-spacing: -4px; line-height: 0.9;
-            background: linear-gradient(to bottom, #fff, #444); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .hero p { max-width: 600px; margin: 30px 0; color: var(--dim); font-size: 1.2rem; }
+        .logo-box { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.2rem; color: var(--brand-dark); }
+        .logo-box img { height: 32px; }
         
-        .cta-btn {
-            padding: 18px 40px; background: #fff; color: #000; border-radius: 100px;
-            font-weight: 700; text-decoration: none; transition: 0.4s; border: 2px solid #fff;
-        }
-        .cta-btn:hover { background: transparent; color: #fff; box-shadow: 0 0 30px rgba(255,255,255,0.2); }
+        .nav-menu a { text-decoration: none; color: var(--text-muted); font-weight: 600; font-size: 0.95rem; margin-left: 30px; transition: 0.3s; }
+        .nav-menu a:hover, .nav-menu a.active { color: var(--brand-primary); }
 
-        /* Bento Grid Services */
-        .section-title { font-size: 3rem; font-weight: 800; text-align: center; margin-bottom: 60px; letter-spacing: -2px; }
-        .bento-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 300px);
-            gap: 20px; max-width: 1200px; margin: 0 auto 100px; padding: 0 20px;
+        /* Hero Section */
+        .hero {
+            padding: 160px 5% 100px;
+            display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 50px;
+            max-width: 1300px; margin: 0 auto;
         }
+        .hero-content h1 { font-size: clamp(2.5rem, 4vw, 3.8rem); font-weight: 800; line-height: 1.1; color: var(--brand-dark); margin-bottom: 25px; }
+        .hero-content h1 span { color: var(--brand-primary); }
+        .hero-content p { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 40px; max-width: 550px; }
 
-        .bento-item {
-            background: var(--card-bg); border: 1px solid var(--border); border-radius: 30px;
-            padding: 40px; position: relative; overflow: hidden; transition: 0.4s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        .btn {
+            display: inline-flex; align-items: center; gap: 10px; padding: 18px 32px;
+            border-radius: 100px; font-weight: 700; text-decoration: none; transition: 0.3s;
         }
-        .bento-item:hover { border-color: var(--primary); transform: scale(1.02); }
-        .bento-item i { font-size: 2.5rem; color: var(--primary); }
-        .bento-item h3 { font-size: 1.5rem; margin: 20px 0 10px; }
-        .bento-item p { color: var(--dim); font-size: 0.9rem; }
+        .btn-primary { background: var(--brand-primary); color: white; border: 2px solid var(--brand-primary); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0, 98, 255, 0.25); }
 
-        .large { grid-column: span 2; }
-        .tall { grid-row: span 2; }
-
-        /* Contact */
-        .contact-section { background: #050505; padding: 100px 5%; border-radius: 60px 60px 0 0; border-top: 1px solid var(--border); }
-        .contact-container { max-width: 500px; margin: 0 auto; }
-        input, textarea {
-            width: 100%; padding: 20px; background: #111; border: 1px solid var(--border);
-            border-radius: 15px; color: #fff; margin-bottom: 15px; outline: none; transition: 0.3s;
+        /* Niche Sections (UX Focus) */
+        .section { padding: 100px 5%; max-width: 1300px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 70px; }
+        .section-header h2 { font-size: 2.5rem; color: var(--brand-dark); margin-bottom: 15px; }
+        
+        .niche-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .niche-card {
+            background: var(--white); padding: 40px; border-radius: var(--radius);
+            border: 1px solid rgba(0,0,0,0.05); transition: 0.3s; position: relative;
         }
-        input:focus { border-color: var(--primary); }
-        .submit-btn {
-            width: 100%; padding: 20px; background: var(--primary); color: #000;
-            border: none; border-radius: 15px; font-weight: 800; cursor: pointer; transition: 0.3s;
-        }
-        .submit-btn:hover { filter: brightness(1.2); transform: translateY(-3px); }
+        .niche-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); border-color: var(--brand-primary); }
+        .niche-card i { font-size: 2rem; color: var(--brand-primary); margin-bottom: 25px; }
+        .niche-card h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--brand-dark); }
+        .niche-card p { color: var(--text-muted); margin-bottom: 20px; }
+        .niche-card ul { list-style: none; }
+        .niche-card li { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; margin-bottom: 8px; font-weight: 600; }
+        .niche-card li i { font-size: 0.8rem; margin: 0; }
 
-        @media (max-width: 1000px) {
-            .bento-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
-            .large, .tall { grid-column: span 1; grid-row: span 1; }
-            .hero h1 { font-size: 3.5rem; }
+        /* Form Section */
+        .contact-wrapper {
+            background: var(--brand-dark); border-radius: 30px; padding: 60px;
+            color: white; display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center;
+        }
+        .contact-info h2 { font-size: 3rem; line-height: 1.1; margin-bottom: 20px; }
+        .contact-form { background: var(--white); padding: 40px; border-radius: 20px; }
+        .contact-form input, .contact-form select, .contact-form textarea {
+            width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #e2e8f0; border-radius: 10px; font-size: 1rem;
+        }
+        .form-btn { width: 100%; padding: 18px; background: var(--brand-primary); color: white; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; transition: 0.3s; }
+
+        @media (max-width: 900px) {
+            .hero, .contact-wrapper { grid-template-columns: 1fr; text-align: center; }
+            .hero-content p { margin: 0 auto 40px; }
         }
     </style>
 </head>
 <body>
-    <div class="aurora"></div>
 
-    <nav class="navbar">
-        <div class="logo">
-            <img src="{% static 'images/logo.png' %}" alt="Stolus"> STOLUS
+<nav class="navbar">
+    <div class="logo-box">
+        <img src="{% static 'images/logo.png' %}" alt="Stolus">
+        STOLUS
+    </div>
+    <div class="nav-menu">
+        <a href="{% url 'home' %}" class="active">Home</a>
+        <a href="{% url 'about' %}">A Empresa</a>
+        <a href="#contato">Solicitar Orçamento</a>
+    </div>
+</nav>
+
+<header class="hero">
+    <div class="hero-content">
+        <h1>Transforme sua operação em um <span>sistema eficiente.</span></h1>
+        <p>Desenvolvemos softwares sob medida que eliminam o trabalho manual e organizam o crescimento de imobiliárias, clínicas e consultorias.</p>
+        <div class="hero-btns">
+            <a href="#contato" class="btn btn-primary">Iniciar Diagnóstico Gratuito</a>
         </div>
-        <div class="nav-links">
-            <a href="{% url 'about' %}">Ecossistema</a>
-            <a href="#contato">Projetos</a>
+    </div>
+    <div class="hero-image">
+        <img src="https://cdn-icons-png.flaticon.com/512/7230/7230559.png" alt="Sistemas" style="width: 100%; max-width: 500px; filter: hue-rotate(190deg);">
+    </div>
+</header>
+
+<section class="section">
+    <div class="section-header">
+        <h2>Soluções Especializadas</h2>
+        <p>Entendemos o seu mercado e criamos a ferramenta certa para ele.</p>
+    </div>
+    <div class="niche-grid">
+        <div class="niche-card">
+            <i class="fa-solid fa-house-chimney"></i>
+            <h3>Imobiliárias</h3>
+            <p>Sistemas para gestão de carteira, integração com portais e automação de contratos.</p>
+            <ul>
+                <li><i class="fa-solid fa-check"></i> CRM Imobiliário</li>
+                <li><i class="fa-solid fa-check"></i> Controle de Aluguéis</li>
+            </ul>
         </div>
-    </nav>
 
-    <header class="hero">
-        <h1>SISTEMAS QUE<br><span>RESOLVEM.</span></h1>
-        <p>Desenvolvemos o motor tecnológico de imobiliárias, clínicas e consultorias. Menos processo manual, mais escala.</p>
-        <a href="https://wa.me/5562994278195" class="cta-btn">INICIAR AGORA</a>
-    </header>
-
-    <section id="servicos">
-        <h2 class="section-title">Nossas Soluções</h2>
-        <div class="bento-grid">
-            <div class="bento-item large">
-                <i class="fa-solid fa-laptop-code"></i>
-                <div>
-                    <h3>Sistemas de Gestão</h3>
-                    <p>ERPs personalizados para imobiliárias e consultorias financeiras. Controle seu caixa e seus clientes em um só lugar.</p>
-                </div>
-            </div>
-            <div class="bento-item">
-                <i class="fa-solid fa-calendar-check"></i>
-                <h3>Agendamento</h3>
-                <p>Para clínicas: agenda inteligente que trabalha sozinha.</p>
-            </div>
-            <div class="bento-item tall">
-                <i class="fa-solid fa-rocket"></i>
-                <div>
-                    <h3>Sites de Performance</h3>
-                    <p>Não é só um site bonito. É uma ferramenta de vendas otimizada para o Google e focada em converter visitantes em clientes reais.</p>
-                </div>
-            </div>
-            <div class="bento-item">
-                <i class="fa-solid fa-bolt"></i>
-                <h3>Automações</h3>
-                <p>Conectamos suas ferramentas via API.</p>
-            </div>
-            <div class="bento-item large">
-                <i class="fa-solid fa-database"></i>
-                <div>
-                    <h3>Inteligência de Dados</h3>
-                    <p>Dashboards que mostram a saúde do seu negócio em tempo real. Tome decisões baseadas em fatos, não em palpites.</p>
-                </div>
-            </div>
+        <div class="niche-card">
+            <i class="fa-solid fa-stethoscope"></i>
+            <h3>Clínicas & Saúde</h3>
+            <p>Agendamento inteligente e prontuários digitais com foco na experiência do paciente.</p>
+            <ul>
+                <li><i class="fa-solid fa-check"></i> Agenda Online 24/7</li>
+                <li><i class="fa-solid fa-check"></i> Lembretes WhatsApp</li>
+            </ul>
         </div>
-    </section>
 
-    <section class="contact-section" id="contato">
-        <h2 class="section-title">Bora crescer?</h2>
-        <div class="contact-container">
+        <div class="niche-card">
+            <i class="fa-solid fa-chart-line"></i>
+            <h3>Consultorias</h3>
+            <p>Dashboards de indicadores (BI) e automação de relatórios para decisões rápidas.</p>
+            <ul>
+                <li><i class="fa-solid fa-check"></i> Dashboards em Tempo Real</li>
+                <li><i class="fa-solid fa-check"></i> Gestão de Processos</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="contato">
+    <div class="contact-wrapper">
+        <div class="contact-info">
+            <h2>Pronto para profissionalizar seu negócio?</h2>
+            <p>Fale com quem entende de processos. Nossa equipe desenha a solução ideal para o seu momento atual.</p>
+        </div>
+        <div class="contact-form">
             <form method="post">
                 {% csrf_token %}
+                <label style="color: #64748b; font-size: 0.8rem; font-weight: 700;">NOME COMPLETO</label>
                 {{ form.name }}
+                <label style="color: #64748b; font-size: 0.8rem; font-weight: 700;">E-MAIL CORPORATIVO</label>
                 {{ form.email }}
+                <label style="color: #64748b; font-size: 0.8rem; font-weight: 700;">WHATSAPP / TELEFONE</label>
                 {{ form.phone }}
-                <button type="submit" class="submit-btn">ENVIAR PROPOSTA</button>
+                <button type="submit" class="form-btn">SOLICITAR CONSULTA TÉCNICA</button>
             </form>
         </div>
-    </section>
+    </div>
+</section>
 
-    <footer style="padding: 50px; text-align: center; color: var(--dim); font-size: 0.8rem; border-top: 1px solid var(--border);">
-        STOLUS © 2026 — TECNOLOGIA SOB MEDIDA.
-    </footer>
+<footer style="padding: 50px 5%; text-align: center; color: var(--text-muted); border-top: 1px solid #e2e8f0;">
+    <p>© 2026 Stolus Software. Tecnologia focada em resultados reais.</p>
+</footer>
 
 </body>
 </html>
