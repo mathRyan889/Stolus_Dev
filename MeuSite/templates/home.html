@@ -4,162 +4,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stolus | Sistemas Inteligentes para PMEs</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Stolus | Desenvolvimento de Software</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --bg-deep: #020617; /* Azul quase preto */
-            --bg-card: #0f172a; /* Azul escuro */
-            --accent: #38bdf8;  /* Ciano moderno */
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --border: rgba(255, 255, 255, 0.08);
-            --radius: 20px;
+            --bg-dark: #020617;
+            --card-bg: rgba(30, 41, 59, 0.5);
+            --primary: #38bdf8;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-        body { background-color: var(--bg-deep); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
 
-        /* Navbar Fluida */
+        /* Navbar SaaS Style */
         .navbar {
             position: fixed; top: 0; width: 100%; z-index: 1000;
-            background: rgba(2, 6, 23, 0.8); backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--border); padding: 1rem 5%;
-            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(2, 6, 23, 0.8); backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;
         }
-        .logo { font-weight: 800; font-size: 1.1rem; letter-spacing: 1px; color: var(--text-primary); text-transform: uppercase; }
-        .logo span { color: var(--accent); }
+        .nav-logo-container { display: flex; align-items: center; gap: 15px; }
+        .nav-logo img { height: 40px; }
+        .nav-logo-text { font-weight: 800; font-size: 0.85rem; letter-spacing: 0.1em; color: var(--text-main); }
         
-        .nav-links a { text-decoration: none; color: var(--text-secondary); font-weight: 500; font-size: 0.9rem; margin-left: 25px; transition: 0.3s; }
-        .nav-links a:hover { color: var(--accent); }
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { color: var(--text-main); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
 
-        /* Hero UX - Focado no Benefício */
-        .hero {
-            min-height: 90vh; padding: 140px 5% 80px;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
+        /* Hero */
+        header {
+            padding: 160px 20px 100px;
+            text-align: center;
+            background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.08), transparent);
         }
-        .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 25px; letter-spacing: -2px; }
-        .hero h1 span { color: var(--accent); }
-        .hero p { font-size: 1.25rem; color: var(--text-secondary); max-width: 700px; margin-bottom: 40px; }
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 20px; }
+        .hero span { color: var(--primary); }
+        .hero p { max-width: 650px; margin: 0 auto 40px; color: var(--text-dim); font-size: 1.2rem; }
 
-        .btn {
-            display: inline-flex; align-items: center; gap: 12px; padding: 18px 36px;
-            border-radius: 12px; font-weight: 700; text-decoration: none; transition: 0.3s; font-size: 1rem;
+        .btn-main {
+            padding: 16px 32px; background: var(--primary); color: #000;
+            border-radius: 12px; font-weight: 700; text-decoration: none;
+            display: inline-flex; align-items: center; gap: 10px; transition: 0.3s;
         }
-        .btn-primary { background: var(--accent); color: #020617; }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(56, 189, 248, 0.3); }
+        .btn-main:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(56, 189, 248, 0.3); }
 
-        /* Grid de Soluções - Experiência Visual */
-        .section { padding: 100px 5%; max-width: 1200px; margin: 0 auto; }
-        .section-header { margin-bottom: 60px; text-align: center; }
-        .section-header h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 15px; }
-        .section-header p { color: var(--text-secondary); font-size: 1.1rem; }
+        .hero-social { margin-top: 30px; display: flex; justify-content: center; gap: 20px; }
+        .hero-social a { color: var(--text-dim); font-size: 1.5rem; transition: 0.3s; }
+        .hero-social a:hover { color: var(--primary); transform: scale(1.1); }
 
-        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-        .service-card {
-            background: var(--bg-card); padding: 40px; border-radius: var(--radius);
-            border: 1px solid var(--border); transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        /* Grid de Soluções */
+        section { max-width: 1200px; margin: auto; padding: 80px 20px; }
+        .section-title { text-align: center; margin-bottom: 60px; font-size: 2.5rem; font-weight: 700; }
+
+        .solution-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;
         }
-        .service-card:hover { border-color: var(--accent); transform: translateY(-10px); background: #1e293b; }
-        .service-card i { font-size: 2.2rem; color: var(--accent); margin-bottom: 25px; display: block; }
-        .service-card h3 { font-size: 1.4rem; margin-bottom: 15px; font-weight: 700; }
-        .service-card p { color: var(--text-secondary); font-size: 0.95rem; }
-
-        /* Formulário UX - Direto e Limpo */
-        .contact-container {
-            background: linear-gradient(145deg, #0f172a, #020617);
-            border: 1px solid var(--border); border-radius: 30px; padding: 60px;
-            display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
-        }
-        .contact-text h2 { font-size: 3rem; font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
         
-        .form-box input, .form-box textarea {
-            width: 100%; padding: 16px; margin-bottom: 15px; background: rgba(255,255,255,0.03);
-            border: 1px solid var(--border); border-radius: 10px; color: white; outline: none; transition: 0.3s;
+        /* Ajuste para Cards Clicáveis */
+        .solution-link { text-decoration: none; color: inherit; display: block; }
+        
+        .solution-card {
+            background: var(--card-bg); border: 1px solid rgba(255,255,255,0.05);
+            padding: 40px; border-radius: 24px; transition: 0.4s; display: flex; flex-direction: column;
+            height: 100%; cursor: pointer;
         }
-        .form-box input:focus { border-color: var(--accent); background: rgba(255,255,255,0.05); }
-        .form-submit {
-            width: 100%; padding: 18px; background: var(--accent); color: #020617;
-            border: none; border-radius: 10px; font-weight: 800; cursor: pointer; transition: 0.3s;
+        .solution-card:hover { border-color: var(--primary); transform: translateY(-5px); background: rgba(30, 41, 59, 0.8); }
+        .solution-card i { font-size: 2rem; color: var(--primary); margin-bottom: 20px; }
+        .solution-card h3 { margin-bottom: 15px; font-size: 1.4rem; color: var(--text-main); }
+        .solution-card p { color: var(--text-dim); font-size: 0.95rem; margin-bottom: 20px; flex-grow: 1; }
+        .solution-card ul { list-style: none; color: var(--text-main); font-size: 0.9rem; }
+        .solution-card ul li { margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+        .solution-card ul li::before { content: "→"; color: var(--primary); font-weight: bold; }
+
+        /* Contato SaaS Form */
+        .contact-box {
+            max-width: 600px; margin: 40px auto; background: #0f172a;
+            padding: 40px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.05);
         }
-        .form-submit:hover { filter: brightness(1.1); transform: translateY(-2px); }
+        form input, form select, form textarea {
+            width: 100%; padding: 15px; margin-bottom: 15px; background: #1e293b;
+            border: 1px solid #334155; border-radius: 10px; color: white; outline: none;
+        }
+        form button {
+            width: 100%; padding: 15px; background: var(--primary); border: none;
+            border-radius: 10px; font-weight: 700; cursor: pointer; transition: 0.3s;
+        }
+        form button:hover { background: #7dd3fc; }
 
-        footer { padding: 60px 5%; text-align: center; border-top: 1px solid var(--border); color: var(--text-secondary); font-size: 0.85rem; }
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.05); padding: 60px 20px 30px; background: #010409;
+        }
+        .footer-content {
+            max-width: 1200px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px; margin-bottom: 40px;
+        }
+        .footer-brand img { height: 35px; margin-bottom: 15px; }
+        .footer-links h4 { margin-bottom: 20px; color: var(--primary); font-size: 0.9rem; text-transform: uppercase; }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: var(--text-dim); text-decoration: none; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
+        .footer-links a:hover { color: var(--text-main); }
+        .copyright { text-align: center; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; }
 
-        @media (max-width: 900px) {
-            .contact-container { grid-template-columns: 1fr; padding: 40px 20px; text-align: center; }
-            .hero h1 { font-size: 3rem; }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.2rem; }
+            .nav-logo-text { display: none; }
         }
     </style>
 </head>
 <body>
 
 <nav class="navbar">
-    <div class="logo">STOLUS<span>SOFTWARE</span></div>
-    <div class="nav-links">
-        <a href="{% url 'about' %}">Ecossistema</a>
-        <a href="#solucoes">Soluções</a>
-        <a href="#contato">Contato</a>
+    <div class="nav-logo-container">
+        <div class="nav-logo">
+            <img src="{% static 'images/logo.png' %}" alt="Stolus">
+        </div>
+        <span class="nav-logo-text">STOLUS DESENVOLVIMENTO DE SOFTWARE</span>
     </div>
+    <ul class="nav-links">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'about' %}">Sobre a Stolus</a></li>
+        <li><a href="#contato">Contato</a></li>
+    </ul>
 </nav>
 
-<header class="hero">
-    <h1>Evolua a gestão da sua <span>empresa.</span></h1>
-    <p>Criamos sistemas de alta performance para imobiliárias e prestadores de serviço que buscam automação real e design intuitivo.</p>
-    <a href="#contato" class="btn btn-primary">Falar com um Especialista <i class="fa-solid fa-arrow-right"></i></a>
+<header>
+    <div class="hero">
+        <img src="{% static 'images/logo.png' %}" alt="Stolus" style="width: 100px; margin-bottom: 30px;">
+        <h1>Soluções em Software <span>Sob Medida</span></h1>
+        <p>A Stolus transforma complexidade em eficiência. Criamos sistemas que organizam sua operação e aceleram seu crescimento.</p>
+        <a href="https://wa.me/5562994278195" class="btn-main">
+            <i class="fa-brands fa-whatsapp"></i> Iniciar um Projeto
+        </a>
+        
+        <div class="hero-social">
+            <a href="https://github.com/mathRyan889" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/matheus-ryan-74110521b/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+    </div>
 </header>
 
-<section class="section" id="solucoes">
-    <div class="section-header">
-        <h2>Focado no seu negócio</h2>
-        <p>Software sob medida não é luxo, é ferramenta de escala.</p>
-    </div>
-    <div class="service-grid">
-        <div class="service-card">
-            <i class="fa-solid fa-house-laptop"></i>
-            <h3>Imobiliárias</h3>
-            <p>Controle de locação, vendas e integração automática com portais imobiliários.</p>
-        </div>
-        <div class="service-card">
-            <i class="fa-solid fa-notes-medical"></i>
-            <h3>Clínicas</h3>
-            <p>Agendamento online inteligente e prontuário digital focado na agilidade do atendimento.</p>
-        </div>
-        <div class="service-card">
-            <i class="fa-solid fa-chart-pie"></i>
-            <h3>Dashboard BI</h3>
-            <p>Visualize a saúde financeira e operacional do seu negócio em tempo real.</p>
-        </div>
-        <div class="service-card">
-            <i class="fa-solid fa-code-compare"></i>
-            <h3>Automações</h3>
-            <p>Integramos suas ferramentas atuais (WhatsApp, APIs, Bancos) para eliminar erros manuais.</p>
-        </div>
+<section id="servicos">
+    <h2 class="section-title">O que construímos</h2>
+    <div class="solution-grid">
+        
+        <a href="https://wa.me/5562994278195?text=Olá! Gostaria de saber mais sobre Sites Institucionais." target="_blank" class="solution-link">
+            <div class="solution-card">
+                <i class="fa-solid fa-building"></i>
+                <h3>Sites Institucionais</h3>
+                <p>Presença digital sólida e profissional para transmitir credibilidade, valores e autoridade para sua marca.</p>
+                <ul>
+                    <li>Apresentação de Autoridade</li>
+                    <li>SEO Estrutural</li>
+                    <li>Design Responsivo</li>
+                </ul>
+            </div>
+        </a>
+        <a href="https://wa.me/5562994278195?text=Olá! Gostaria de saber mais sobre Sistemas de Gestão e ERPs." target="_blank" class="solution-link">
+            <div class="solution-card">
+                <i class="fa-solid fa-laptop-code"></i>
+                <h3>Sistemas de Gestão</h3>
+                <p>ERPs e Dashboards administrativos para controle total de processos internos.</p>
+                <ul>
+                    <li>Multi-usuários</li>
+                    <li>Relatórios em tempo real</li>
+                </ul>
+            </div>
+        </a>
+        
+        <a href="https://wa.me/5562994278195?text=Olá! Gostaria de saber mais sobre as plataformas de Agendamento Inteligente." target="_blank" class="solution-link">
+            <div class="solution-card">
+                <i class="fa-solid fa-calendar-check"></i>
+                <h3>Agendamento Inteligente</h3>
+                <p>Plataformas completas para reservas, consultas e fluxos de horários automáticos.</p>
+                <ul>
+                    <li>Lembretes automáticos</li>
+                    <li>Gestão de equipe</li>
+                </ul>
+            </div>
+        </a>
+
+        <a href="https://wa.me/5562994278195?text=Olá! Gostaria de saber mais sobre Automações e APIs." target="_blank" class="solution-link">
+            <div class="solution-card">
+                <i class="fa-solid fa-bolt"></i>
+                <h3>Automações & APIs</h3>
+                <p>Integrações entre ferramentas e criação de infraestrutura back-end robusta.</p>
+                <ul>
+                    <li>Segurança de dados</li>
+                    <li>Escalabilidade</li>
+                </ul>
+            </div>
+        </a>
+
     </div>
 </section>
 
-<section class="section" id="contato">
-    <div class="contact-container">
-        <div class="contact-text">
-            <h2>Vamos projetar sua nova ferramenta?</h2>
-            <p style="color: var(--text-secondary);">Agende um diagnóstico gratuito e entenda como a tecnologia pode reduzir seus custos operacionais.</p>
-        </div>
-        <div class="form-box">
-            <form method="post">
-                {% csrf_token %}
-                {{ form.name }}
-                {{ form.email }}
-                {{ form.phone }}
-                <button type="submit" class="form-submit">SOLICITAR PROPOSTA</button>
-            </form>
-        </div>
+<section id="contato">
+    <h2 class="section-title">Fale Conosco</h2>
+    <div class="contact-box">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.name }}
+            {{ form.email }}
+            {{ form.phone }}
+            <button type="submit">Enviar Proposta</button>
+        </form>
     </div>
 </section>
 
 <footer>
-    <p>© 2026 STOLUS SOFTWARE | Desenvolvido para empresas que não param de crescer.</p>
+    <div class="footer-content">
+        <div class="footer-brand">
+            <img src="{% static 'images/logo.png' %}" alt="Stolus">
+            <p style="color: var(--text-dim); font-size: 0.9rem;">Desenvolvimento de software focado em resultados reais.</p>
+        </div>
+        <div class="footer-links">
+            <h4>Navegação</h4>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">Sobre</a></li>
+            </ul>
+        </div>
+        <div class="footer-links">
+            <h4>Social & Contato</h4>
+            <ul>
+                <li><a href="https://wa.me/5562994278195" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a></li>
+                <li><a href="https://www.linkedin.com/in/matheus-ryan-74110521b/" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></li>
+                <li><a href="https://github.com/mathRyan889" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="copyright">
+        © 2026 Stolus Desenvolvimento de Software — Todos os direitos reservados.
+    </div>
 </footer>
 
 </body>
