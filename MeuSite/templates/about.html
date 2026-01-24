@@ -15,32 +15,28 @@
         .navbar { padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
         .navbar img { height: 30px; }
 
-        section { max-width: 900px; margin: auto; padding: 80px 5%; }
-        h2 { font-size: 2.2rem; margin-bottom: 30px; color: var(--primary); letter-spacing: -1px; }
-        p { margin-bottom: 25px; color: var(--text-dim); font-size: 1.1rem; }
-        strong { color: #fff; }
-
-        .profile-card {
-            display: flex; align-items: center; gap: 40px; background: rgba(30, 41, 59, 0.3);
-            padding: 40px; border-radius: 32px; border: 1px solid var(--border); margin: 50px 0;
-        }
-        .profile-card img { width: 150px; height: 150px; border-radius: 24px; object-fit: cover; border: 2px solid var(--primary); }
-        .profile-info h3 { font-size: 1.5rem; color: #fff; }
-        .role { color: var(--primary); font-weight: 600; display: block; margin-bottom: 15px; }
+        section { max-width: 850px; margin: auto; padding: 80px 5%; }
+        h2 { font-size: 2.2rem; margin-bottom: 25px; color: var(--primary); }
+        p { margin-bottom: 20px; color: var(--text-dim); font-size: 1.1rem; }
         
-        .stack-list { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin-top: 20px; }
-        .stack-item { background: rgba(56, 189, 248, 0.1); padding: 6px 14px; border-radius: 8px; font-size: 0.75rem; color: var(--primary); font-weight: 700; }
-
-        .accordion-item { margin-bottom: 12px; border-radius: 16px; overflow: hidden; background: rgba(15, 23, 42, 0.5); border: 1px solid var(--border); }
-        .accordion-header {
-            width: 100%; padding: 24px; background: none; border: none; color: #fff;
-            text-align: left; font-size: 1.1rem; font-weight: 600; cursor: pointer;
-            display: flex; justify-content: space-between; align-items: center;
+        .profile-card {
+            display: flex; align-items: center; gap: 35px; background: rgba(30, 41, 59, 0.3);
+            padding: 35px; border-radius: 24px; border: 1px solid var(--border); margin: 40px 0;
         }
-        .accordion-content { padding: 0 24px; max-height: 0; overflow: hidden; transition: 0.3s ease-out; color: var(--text-dim); }
-        .accordion-item.active .accordion-content { padding: 0 24px 24px; max-height: 200px; }
+        .profile-card img { width: 130px; height: 130px; border-radius: 20px; object-fit: cover; border: 2px solid var(--primary); }
+        
+        .stack-list { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin-top: 15px; }
+        .stack-item { background: rgba(56, 189, 248, 0.1); padding: 5px 12px; border-radius: 6px; font-size: 0.8rem; color: var(--primary); }
 
-        .cta-box { text-align: center; background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); padding: 80px 20px; border-radius: 40px; margin-top: 60px; border: 1px solid var(--border); }
+        .accordion-item { margin-bottom: 10px; border-radius: 12px; background: rgba(15, 23, 42, 0.5); border: 1px solid var(--border); }
+        .accordion-header {
+            width: 100%; padding: 20px; background: none; border: none; color: #fff;
+            text-align: left; font-size: 1.1rem; cursor: pointer; display: flex; justify-content: space-between;
+        }
+        .accordion-content { padding: 0 20px; max-height: 0; overflow: hidden; transition: 0.3s; color: var(--text-dim); }
+        .accordion-item.active .accordion-content { padding: 0 20px 20px; max-height: 200px; }
+
+        .cta-box { text-align: center; background: #0f172a; padding: 60px 20px; border-radius: 30px; border: 1px solid var(--border); }
 
         @media (max-width: 768px) { .profile-card { flex-direction: column; text-align: center; } }
     </style>
@@ -49,57 +45,50 @@
 
 <nav class="navbar">
     <a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="Stolus"></a>
-    <a href="{% url 'home' %}" style="color: var(--primary); text-decoration: none; font-weight: bold; font-size: 0.9rem;">← Voltar para Home</a>
+    <a href="{% url 'home' %}" style="color: var(--primary); text-decoration: none;">← Voltar</a>
 </nav>
 
 <section>
-    <h2>Tecnologia que impulsiona o Pequeno Negócio</h2>
-    <p>A <strong>Stolus</strong> não é apenas uma agência de software. Somos o braço tecnológico de empreendedores que decidiram sair do amadorismo digital.</p>
-    <p>Entendemos que, para uma pequena ou média empresa, cada centavo investido precisa gerar eficiência. Por isso, focamos em <strong>soluções sob medida</strong> que resolvem gargalos reais: aquela planilha que trava, o agendamento que se perde no WhatsApp ou o processo que depende inteiramente da memória do dono.</p>
-    <p>Nossa missão é democratizar o acesso a softwares de alta qualidade, garantindo que o seu negócio tenha as mesmas armas de escala que as grandes corporações utilizam.</p>
+    <h2>Parceria Técnica para o seu Crescimento</h2>
+    <p>A <strong>Stolus</strong> foi criada para apoiar pequenos e médios empreendedores que buscam elevar o nível de seus negócios através da tecnologia.</p>
+    <p>Acreditamos que softwares inteligentes e sites bem estruturados não são apenas ferramentas, mas ativos estratégicos que permitem que você foque no que realmente importa: <strong>fazer sua empresa crescer.</strong></p>
+    <p>Nosso compromisso é entregar soluções acessíveis, robustas e fáceis de usar, traduzindo necessidades complexas em sistemas que facilitam o dia a dia da sua equipe e melhoram a experiência dos seus clientes.</p>
 </section>
 
 <section>
     <div class="profile-card">
         <img src="{% static 'images/matheus.jpg' %}" alt="Matheus Ryan">
         <div class="profile-info">
-            <span class="role">Fundador & Especialista Back-End</span>
-            <h3>Matheus Ryan</h3>
-            <p style="font-size: 0.95rem; margin-top: 10px;">Especialista em Python e Django, construo a inteligência por trás dos sistemas. Meu foco é criar softwares rápidos, seguros e que nunca deixam você na mão.</p>
+            <span style="color: var(--primary); font-weight: 600;">Fundador & Desenvolvedor</span>
+            <h3 style="margin-top: 5px;">Matheus Ryan</h3>
+            <p style="font-size: 0.95rem;">Especialista em Python e Django, atuo na criação de arquiteturas sólidas e seguras, garantindo que a tecnologia seja uma aliada constante na sua jornada empresarial.</p>
             <ul class="stack-list">
-                <li class="stack-item">Python</li>
-                <li class="stack-item">Django</li>
-                <li class="stack-item">PostgreSQL</li>
-                <li class="stack-item">APIs REST</li>
+                <li class="stack-item">Python</li><li class="stack-item">Django</li><li class="stack-item">PostgreSQL</li>
             </ul>
         </div>
     </div>
 </section>
 
 <section>
-    <h2>Como trabalhamos</h2>
+    <h2>Nossa Metodologia</h2>
     <div class="accordion">
         <div class="accordion-item">
-            <button class="accordion-header">01. Diagnóstico de Negócio <i class="fa-solid fa-plus"></i></button>
-            <div class="accordion-content">Mapeamos seus processos atuais para identificar onde a tecnologia pode economizar seu tempo e dinheiro.</div>
+            <button class="accordion-header">Análise Estratégica <i class="fa-solid fa-plus"></i></button>
+            <div class="accordion-content">Entendemos seu modelo de negócio para propor a solução técnica com melhor custo-benefício.</div>
         </div>
         <div class="accordion-item">
-            <button class="accordion-header">02. Desenvolvimento Transparente <i class="fa-solid fa-plus"></i></button>
-            <div class="accordion-content">Você acompanha cada etapa. Criamos sistemas modulares que podem crescer junto com o seu faturamento.</div>
-        </div>
-        <div class="accordion-item">
-            <button class="accordion-header">03. Entrega e Suporte <i class="fa-solid fa-plus"></i></button>
-            <div class="accordion-content">Colocamos seu sistema no ar e garantimos que sua equipe saiba extrair o máximo de performance da ferramenta.</div>
+            <button class="accordion-header">Desenvolvimento Transparente <i class="fa-solid fa-plus"></i></button>
+            <div class="accordion-content">Você acompanha o progresso de perto, garantindo que o produto final esteja alinhado às suas expectativas.</div>
         </div>
     </div>
 </section>
 
 <div class="cta-box">
-    <h2 style="color: #fff; margin-bottom: 20px;">Sua empresa está pronta para escalar?</h2>
-    <a href="https://wa.me/5562994278195" style="display: inline-block; padding: 18px 45px; background: var(--primary); color: #020617; border-radius: 50px; text-decoration: none; font-weight: 800;">Falar com Especialista</a>
+    <h3 style="margin-bottom: 20px;">Vamos construir algo incrível juntos?</h3>
+    <a href="https://wa.me/5562994278195" style="padding: 15px 35px; background: var(--primary); color: #020617; border-radius: 10px; text-decoration: none; font-weight: bold;">Falar com a Stolus</a>
 </div>
 
-<footer style="text-align: center; padding: 60px; color: var(--text-dim); font-size: 0.8rem;">
+<footer style="text-align: center; padding: 40px; color: var(--text-dim); font-size: 0.8rem;">
     © 2026 Stolus — Tecnologia Sob Medida.
 </footer>
 
@@ -108,9 +97,6 @@
         button.addEventListener('click', () => {
             const item = button.parentElement;
             item.classList.toggle('active');
-            const icon = button.querySelector('i');
-            icon.classList.toggle('fa-plus');
-            icon.classList.toggle('fa-minus');
         });
     });
 </script>
