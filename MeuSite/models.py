@@ -20,6 +20,13 @@ class Lead(models.Model):
 class Services(models.Model):
     service = models.CharField(max_length=100, verbose_name="Serviço")
     description = models.TextField(blank=True, null=True, verbose_name="Descrição")
+
+    class Meta:
+        verbose_name = "Serviço"
+        verbose_name_plural = "Serviços"
+
+    def __str__(self):
+        return self.service
     
 class Sales_Dashboard(models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name="Usuário")
