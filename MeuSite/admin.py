@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Lead, Sales_Dashboard
+from .models import Lead, Sales_Dashboard, Services
 
 @admin.register(Lead)
 class LeadAdmin(admin.ModelAdmin):
@@ -7,7 +7,10 @@ class LeadAdmin(admin.ModelAdmin):
     search_fields = ('name', 'email', 'phone')
     list_filter = ('created_at', 'updated_at')
 
-
+@admin.register(Services)
+class ServicesAdmin(admin.ModelAdmin):
+    list_display = ('service', 'description')
+    search_fields = ('service',)
 
 @admin.register(Sales_Dashboard)
 class SalesDashboardAdmin(admin.ModelAdmin):
