@@ -37,14 +37,14 @@ INSTALLED_APPS = [
 ]
 
 JAZZMIN_SETTINGS = {
-    "site_title": "Múltipla Créditos Admin",
-    "site_header": "Múltipla Créditos",
-    "site_brand": "Múltipla Créditos",
+    "site_title": "Stolus Admin",
+    "site_header": "STOLUS",
+    "site_brand": "STOLUS",
     "site_logo": "images/logo.png",
     "login_logo": "images/logo.png",
     "site_icon": "images/logo.png",
     "welcome_sign": "Bem-vindo ao Gestor de Leads",
-    "copyright": "Múltipla Créditos © 2026",
+    "copyright": "STOLUS © 2026",
     "search_model": ["MeuSite.Lead"], # Atualizado para o nome correto do app
     
     "topmenu_links": [
