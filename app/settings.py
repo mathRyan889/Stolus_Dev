@@ -50,11 +50,11 @@ JAZZMIN_SETTINGS = {
     "site_icon": "images/logo.png",
     "welcome_sign": "Bem-vindo ao Gestor de Leads",
     "copyright": "STOLUS © 2026",
-    "search_model": ["MeuSite.Lead"], # Atualizado para o nome correto do app
+    "search_model": ["MeuSite.Lead"], 
     
     "topmenu_links": [
         {"name": "Início", "url": "admin:index", "permissions": ["auth.view_user"]},
-        {"model": "MeuSite.Lead"}, # Atualizado para o nome correto do app
+        {"model": "MeuSite.Lead"}, 
     ],
 
     "show_sidebar": True,
@@ -64,7 +64,6 @@ JAZZMIN_SETTINGS = {
         "auth": "fas fa-users-cog",
         "auth.user": "fas fa-user",
         "auth.group": "fas fa-users",
-        # Atualizado de 'vendas' para 'MeuSite' para ativar os ícones
         "MeuSite.Lead": "fas fa-address-card",
         "MeuSite.Services": "fas fa-concierge-bell",
         "MeuSite.Sales_Dashboard": "fas fa-chart-line",
@@ -186,6 +185,12 @@ USE_TZ = True
 # =========================
 
 STATIC_URL = '/static/'
+
+# A LINHA ABAIXO FOI ADICIONADA PARA O DJANGO ENCONTRAR SUA PASTA RAIZ "static"
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
